@@ -10,15 +10,15 @@ Exercise 1 has been completed for you:
 
 const maxOfTwoNumbers = (x, y) => {
     if (x >= y) {
-      return x;
+        return x;
     } else {
-      return y;
+        return y;
     }
-  }
-  
-  console.log('Exercise 1 Result:', maxOfTwoNumbers(3, 9));
-  
-  /*
+}
+
+console.log('Exercise 1 Result:', maxOfTwoNumbers(3, 9));
+
+/*
 Exercise 2: isAdult()
 
 Write a function named isAdult. It should take an age (number) 
@@ -53,16 +53,11 @@ Example: isCharAVowel('a') should return true.
 Complete the exercise in the space below:
 */
 
-const vowels= ['a','e','i','o','u'];
+function isCharAVowel(char) {
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    return vowels.includes(char.toLowerCase());
+}
 
-const isCharAvowel = (character) => {
-    for (let i =0; < vowels.length; i++) {
-        if (character === vowels[i]){
-            return true;
-        }
-    }
-    return false;
-};
 console.log('Exercise 3 Result:', isCharAVowel("a"));
 
 
@@ -79,10 +74,10 @@ Complete the exercise in the space below:
 */
 
 
-const generateEmail = (name,domain) => {
-    if (email = name.toLowerCase(). replace("","")+ "@" + domain;
-        return email;
+function generateEmail(name, domain) {
+    return `${name}@${domain}`;
 }
+
 console.log('Exercise 4 Result:', generateEmail("johnsmith", "example.com"));
 
 
@@ -98,17 +93,24 @@ Example: greetUser('Sam', 'morning') should return "Good morning, Sam!"
 Complete the exercise in the space below:
 */
 
-const greeterUser = (morning, timeOfDay) => {
-    let greeeting="";
-    if (timeOfDay === "morning") {
-        return "morning" + username + "!";
-    } else if (timeOfDay === "afternoon"){
-        return "afternoon," + username  + "!";
-    }else if (timeOfDay === "evening"){
-        return "evening," + username  + "!";    
-
+function greetUser(name, timeOfDay) {
+    let greeting = '';
+    switch (timeOfDay) {
+    case 'morning':
+    greeting = 'Good morning';
+    break;
+    case 'afternoon':
+    greeting = 'Good afternoon';
+    break;
+    case 'evening':
+    greeting = 'Good evening';
+    break;
+    default:
+    greeting = 'Hello';
     }
-}
+    return `${greeting}, ${name}!`;
+ }
+
 console.log('Exercise 5 Result:', greetUser("Sam", "morning"));
 
 
@@ -124,13 +126,16 @@ Example: maxOfThree(17, 4, 9) should return 17.
 Complete the exercise in the space below:
 */
 
-
-const maxOfThree(num1,num2,num3) {
-    if(Math = Max) {
+function maxOfThree(a, b, c) {
+    let max = a;
+    if (b > max) {
+    max = b;
     }
-        return "Math.max (num1,num2,num3)";
+    if (c > max) {
+    max = c;
+    }
+    return max;
 }
-
 console.log('Exercise 6 Result:', maxOfThree(5, 10, 8));
 
 
@@ -147,10 +152,10 @@ Complete the exercise in the space below:
 */
 
 
-const calculateTip(billAmount,tipPercentage){
-    if(tipAmount=(billAmount*tipPercentage)) /100;
-        return "tipAmount";
+function calculateTip(billAmount, tipPercentage) {
+    return billAmount * (tipPercentage / 100);
 }
+
 console.log('Exercise 7 Result:', calculateTip(50, 20));
 
 
@@ -168,13 +173,17 @@ Example: convertTemperature(32, 'F') should return 0 (Celsius).
 Complete the exercise in the space below:
 */
 
-
-const convertTemperature(temperature, scale) {
-    if (scale ==='c')
-        retrun (temperature*9/5)+32;// Celcius to Fahrenheit conversio n
-    } else (scale === 'F') {
-    return (temperature - 32) *5/9// Fahrenheit to Celsius conversion
+function convertTemperature(temp, scale) {
+    if (scale === 'C') {
+        return (temp * 9 / 5) + 32; //Celcius to Fahrenheit conversion
+    } else if (scale === 'F') {
+        return (temp - 32) * 5 / 9; //Fahrenheit to Celsius conversion
+    } else {
+        return "Error: Invalid scale";
     }
+}
+
+
 console.log('Exercise 8 Result:', convertTemperature(32, "C"));
 
 /*
@@ -193,90 +202,25 @@ Example: basicCalculator(10, 5, 'subtract') should return 5.
 Complete the exercise in the space below:
 */
 
-
-const basicCalculator(num1,num2,operation){
-    if (operation){
-        case'add';
-        return num1 +num 2;
-        case 'subtract';
-        return num1 + num2
-        case 'multiply';
-        return num1 + num2
-        case 'divide';
-        return num1 + num2
-        default: 
-        return "invalid operation";
+function basicCalculator(num1, num2, operation) {
+    switch (operation) {
+        case 'add':
+            return num1 + num2;
+        case 'subtract':
+            return num1 - num2;
+        case 'multiply':
+            return num1 * num2;
+        case 'divide':
+            if (num2 !== 0) {
+                return num1 / num2;
+            } else {
+                return "Error: Division by zero";
+            }
+        default:
+            return "Error: Invalid operation";
     }
 }
+
+
 console.log('Exercise 9 Result:', basicCalculator(10, 5, "subtract"));
 
-/*
-Exercise 10: calculateGrade()
-
-Define a function called calculateGrade. 
-It should take a numerical score and return the corresponding letter 
-grade (A, B, C, D, F). 
-
-For example, 90 and above yields an 'A', 80-89 is a 'B', 
-and 70-79 is a 'C', 60-69 is a 'D' and anything lower than a 60 is an 'F'.
-
-Example: calculateGrade(100) should return A.
-
-Complete the exercise in the space below:
-*/
-
-const CalculateGrade (score) {
-    if(score >=90){
-        return "A";
-    }else if (score >=80) {
-        return "B";
-    }else if (score >=70) {
-        return "C";
-    }else if (score >=60) {
-        return "D";
-    }else {
-        return "F";
-    }
-    }
-}
-console.log('Exercise 10 Result:', calculateGrade(85));
-
-
-/*
-Exercise 11: createUsername()
-
-Define a function called createUsername. 
-It should take a first name and a last name and return a username. 
-
-The username should be a combination of the following:
-- The first three letters of the first name.
-- The first three letters of the last name.
-- The total character count of the first and last name combined.
-
-Example: createUsername('Samantha', 'Green') should return 'SamGre12'.
-
-Complete the exercise in the space below:
-*/
-
-
-const createUsername(firtName,lastName){
-    let username= firtName.slice(0,3) + lastName.slice(0,3) + (firstName.length + lastName.length);
-    retun "username";
-}
-console.log('Exercise 11 Result:', createUsername("Samantha", "Green"));
-
-
-/*
-Exercise 12: numArgs()
-
-Challenge yourself with numArgs. 
-This function should return the count of arguments passed to it when called.
-
-Complete the exercise in the space below:
-*/
-
-
-const numArgs() {
-return "arguments. length";
-}
-console.log('Exercise 12 Result:', numArgs(1, 2, 3, 4));
